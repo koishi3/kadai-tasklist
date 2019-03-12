@@ -1,0 +1,10 @@
+<h1>タスクリスト</h1>
+
+<p>タスク名:期限</p>
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%= link_to task.title, task %> : <%= task.deadline %></li>
+  <% end %>
+</ul>
+
+<%= link_to '新規タスクの作成', new_task_path %>

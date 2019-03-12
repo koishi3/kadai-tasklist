@@ -1,0 +1,9 @@
+<h1><%= @task.title %>の詳細ページ</h1>
+
+<p><%= @task.deadline %></p>
+<p><%= @task.title %></p>
+<p><%= @task.content %></p>
+
+<%= link_to '編集する', edit_task_path %>
+<%= link_to '一覧に戻る', tasks_path %>
+<%= link_to '削除する', @task, method: :delete, data: {confirm: '本当に削除してよろしいですか?'} %>
