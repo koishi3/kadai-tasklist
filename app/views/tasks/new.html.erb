@@ -1,21 +1,5 @@
 <h1>タスク新規作成</h1>
 
-<ul>
-  <%= form_for(@task) do |f| %>
-    <li><%= f.label :title, 'タスク名' %>
-      <%= f.text_field :title %>
-    </li>
-  
-    <li><%= f.label :deadline, '期限' %>
-      <%= f.text_field :deadline %>
-    </li>
-  
-    <li><%= f.label :content, '内容(詳細)' %>
-      <%= f.text_field :content %>
-    </li>
-  
-    <li><%= f.submit '投稿' %></li>
-    
-  <% end %>
-</ul>
+<%= render 'form', task: @task %>
+
 <%= link_to 'タスクリスト一覧', tasks_path %>
