@@ -3,7 +3,7 @@
 <p>タスク名:期限</p>
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.title, task %> : <%= task.deadline %></li>
+    <li><%= task.status %> &gt; <%= link_to task.title, task %> : <%= task.deadline %></li>
   <% end %>
 </ul>
 

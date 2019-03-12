@@ -11,6 +11,10 @@
     <li><%= f.label :content, '内容(詳細)' %>
       <%= f.text_field :content %>
     </li>
+    
+    <li><%= f.label :status, 'ステータス' %>
+      <%= f.select :status, ['未','進行中','済'] %>
+    </li>
   
     <li><%= f.submit '投稿' %></li>
     

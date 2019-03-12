@@ -1,8 +1,9 @@
 <h1><%= @task.title %>の詳細ページ</h1>
 
-<p><%= @task.deadline %></p>
-<p><%= @task.title %></p>
-<p><%= @task.content %></p>
+<p>進行状況:<%= @task.status %></p>
+<p>期限:<%= @task.deadline %></p>
+<p>タスク名:<%= @task.title %></p>
+<p>内容:<%= @task.content %></p>
 
 <%= link_to '編集する', edit_task_path %>
 <%= link_to '一覧に戻る', tasks_path %>
