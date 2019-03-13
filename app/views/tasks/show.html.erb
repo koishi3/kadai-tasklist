@@ -1,10 +1,29 @@
-<h1><%= @task.title %>の詳細ページ</h1>
+<h1><%= @task.title %></h1>
 
-<p>進行状況:<%= @task.status %></p>
-<p>期限:<%= @task.deadline %></p>
-<p>タスク名:<%= @task.title %></p>
-<p>内容:<%= @task.content %></p>
+<table class="table table-bordered">
+  <tr>
+    <th>状況</th>
+    <td><%= @task.status %></td>
+  </tr>
+  <tr>
+    <th>タスク名</th>
+    <td><%= @task.title %></td>
+  </tr>
+  <tr>
+    <th>期限</th>
+    <td><%= @task.deadline %></td>
+  </tr>
+  <tr>
+    <th>内容</th>
+    <td><%= @task.content %></td>
+  </tr>
+</table>
 
-<%= link_to '編集する', edit_task_path %>
-<%= link_to '一覧に戻る', tasks_path %>
-<%= link_to '削除する', @task, method: :delete, data: {confirm: '本当に削除してよろしいですか?'} %>
+<%= link_to edit_task_path, class: 'btn btn-default' do %>
+  <span class="glyphicon glyphicon-pencil"></span>
+  編集する
+<% end %>
+<%= link_to @task, method: :delete, data: {confirm: '本当に削除してよろしいですか?'}, class: 'btn btn-danger' do %>
+  <span class="glyphicon glyphicon-trash"></span>
+  削除する
+<% end %>
