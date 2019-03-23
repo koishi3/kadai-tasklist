@@ -1,0 +1,20 @@
+<% if logged_in? %>
+  <p>ログインユーザ: <%= current_user.name %></p>
+
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h2>Welcome to the TASKLISTS</h2>
+        <div>
+          <p>タスクリストでは<br>登録することで自分自身のリストを作成することができます。</p>
+          <p>メールアドレスのみで簡単に登録できます。</p>
+        </div>
+        <div>
+          <p>テスト用ログイン情報</p>
+          <p>アドレス:test@test.com</p>
+          <p>パスワード:1234</p>
+        </div>
+      <%= link_to '今すぐ登録する', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+<% end %>
