@@ -23,7 +23,7 @@
   <span class="glyphicon glyphicon-pencil"></span>
   編集する
 <% end %>
-<%= link_to @task, method: :delete, data: {confirm: '本当に削除してよろしいですか?'}, class: 'btn btn-danger' do %>
+<%= link_to task_path, method: :delete, data: {confirm: '本当に削除してよろしいですか?'}, class: 'btn btn-danger' do %>
   <span class="glyphicon glyphicon-trash"></span>
   削除する
 <% end %>

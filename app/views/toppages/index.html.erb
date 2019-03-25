@@ -1,5 +1,7 @@
 <% if logged_in? %>
-  <p>ログインユーザ: <%= current_user.name %></p>
+  <div class="row">
+    <%= render 'tasks/tasklist', tasks: @tasks %>
+  </div>
 
 <% else %>
   <div class="center jumbotron">
@@ -11,10 +13,11 @@
         </div>
         <div>
           <p>テスト用ログイン情報</p>
-          <p>アドレス:test@test.com</p>
+          <p>アドレス:test01@test.com</p>
           <p>パスワード:1234</p>
         </div>
       <%= link_to '今すぐ登録する', signup_path, class: 'btn btn-lg btn-primary' %>
+        <p>すでにご登録済みの方は<%= link_to 'こちら', login_path %>から</p>
     </div>
   </div>
 <% end %>
