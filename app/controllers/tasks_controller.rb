@@ -1,9 +1,16 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
   before_action :set_task, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  #before_action :check_user, only: [:show, :edit, :update, :destroy]
   
   def show
+    # models/task.rbにbelongs_to :userがあるので、下記のように記載すれば、当該taskの作成者が取得できる
+    # if @task.user != current_user
+    #   redirect_to "http://www.yahoo.co.jp/"
+    # end
+    # 後置if
+    # redirect_to root_url if @task.user != current_user
   end
   
   def new
@@ -11,7 +18,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task=current_user.tasks.build(task_params)
     
     if @task.save
       flash[:success]='新しくリストを追加しました！'
@@ -26,7 +32,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    
     if @task.update(task_params)
       flash[:success]='タスクが更新されました'
       redirect_to root_url
@@ -52,6 +57,10 @@ class TasksController < ApplicationController
   # Common
   def set_task
     @task=Task.find(params[:id])
+  end
+  
+  def check_user
+    redirect_to root_url if @task.user != current_user
   end
   
   # Correct User for Destroy
