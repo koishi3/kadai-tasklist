@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :set_task, only: [:show, :edit, :update]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   #before_action :check_user, only: [:show, :edit, :update, :destroy]
   
   def show
+  rescue ActiveRecord::RecordNotFound
+  redirect to root_url, :flash => { :error => "指定したタスクは見つかりませんでした" }
     # models/task.rbにbelongs_to :userがあるので、下記のように記載すれば、当該taskの作成者が取得できる
     # if @task.user != current_user
     #   redirect_to "http://www.yahoo.co.jp/"
@@ -52,11 +53,6 @@ class TasksController < ApplicationController
   # Strong Parameter
   def task_params
     params.require(:task).permit(:title, :content, :deadline, :status)
-  end
-  
-  # Common
-  def set_task
-    @task=Task.find(params[:id])
   end
   
   #def check_user
