@@ -11,9 +11,7 @@
   </aside>
   <dic class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
-      <li><a href="#">Tasklists</a></li>
-      <li><a href="#">Followings</a></li>
-      <li><a href="#">Followers</a></li>
+      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %> Tasklists <span class="badge"><%= @count_tasks %></span><% end %></li>
     </ul>
   </dic>
 </div>
