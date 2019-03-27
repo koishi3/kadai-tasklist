@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    
+    @task=current_user.tasks.build(task_params)
     if @task.save
       flash[:success]='新しくリストを追加しました！'
       redirect_to root_url
@@ -59,9 +59,9 @@ class TasksController < ApplicationController
     @task=Task.find(params[:id])
   end
   
-  def check_user
-    redirect_to root_url if @task.user != current_user
-  end
+  #def check_user
+    #redirect_to root_url if @task.user != current_user
+  #end
   
   # Correct User for Destroy
   def correct_user
