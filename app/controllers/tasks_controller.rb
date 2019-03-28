@@ -4,8 +4,12 @@ class TasksController < ApplicationController
   #before_action :check_user, only: [:show, :edit, :update, :destroy]
   
   def show
-  rescue ActiveRecord::RecordNotFound
-  redirect to root_url, :flash => { :error => "指定したタスクは見つかりませんでした" }
+  #rescue ActiveRecord::RecordNotFound
+  #redirect to root_url
+  #存在しないidのページはエラーとしても良さそうとのことでした
+  #他の書き方(private>correct_user)
+  
+  
     # models/task.rbにbelongs_to :userがあるので、下記のように記載すれば、当該taskの作成者が取得できる
     # if @task.user != current_user
     #   redirect_to "http://www.yahoo.co.jp/"
@@ -66,4 +70,12 @@ class TasksController < ApplicationController
       redirect_to root_url
     end
   end
+  
+  #currect_userの別の書き方(かつ例外処理(↑のコメントアウト)ではない書き方)
+  #def currect_user
+    #@task=Task.find_by(id: params[:id]) #存在しない場合は@taskにnilが入る
+    #return redirect_to root_url unless @task
+    #redirect_to root_url if @task.user != current_user
+  #end
+  
 end
